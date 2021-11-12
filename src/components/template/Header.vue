@@ -28,6 +28,7 @@
           "
         >
           <input
+            v-model="text"
             class="
               appearance-none
               bg-transparent bg-white
@@ -73,6 +74,7 @@
             aria-label="Full name"
           />
           <button
+            @click.prevent="sendMessage()"
             class="
               inline-block
               text-sm
@@ -96,7 +98,18 @@
 </template>
 
 <script>
-export default {};
+import Bus from "../bus";
+
+export default {
+  data: () => ({
+    text: "",
+  }),
+  methods: {
+    sendMessage() {
+      Bus.$emit("send:message", this.text);
+    },
+  },
+};
 </script>
 
 <style>
