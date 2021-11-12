@@ -144,7 +144,14 @@
           </div>
         </div>
         <div class="lg:w-2/3 w-2/3 mt-4 lg:mt-2 pl-4 ml-4">
-          <a>Conteudo do gráfico...</a>
+          <pie-chart
+            v-model="people.name"
+            class=""
+            :data="[
+              [name, 44],
+              ['Strawberry', 23],
+            ]"
+          ></pie-chart>
         </div>
       </div>
     </div>
