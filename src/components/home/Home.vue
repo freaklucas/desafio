@@ -31,6 +31,7 @@
             "
           >
             <input
+              v-model="people.name"
               class="
                 appearance-none
                 bg-transparent bg-white
@@ -46,7 +47,7 @@
               aria-label="Full name"
             />
             <input
-              v-model="lastName"
+              v-model="people.lastName"
               class="
                 appearance-none
                 bg-transparent bg-white
@@ -62,6 +63,7 @@
               aria-label="Full name"
             />
             <input
+              v-model="people.participation"
               class="
                 appearance-none
                 bg-transparent bg-white
@@ -77,7 +79,7 @@
               aria-label="Full name"
             />
             <button
-              @click.prevent="submit()"
+              @click.prevent="savePeople(people)"
               class="
                 inline-block
                 text-sm
@@ -127,15 +129,14 @@
                   <th class="px-4 py-3">Participation</th>
                 </tr>
                 <tr
-                  v-for="(message, index) in messageList"
-                  :item="message"
-                  :key="index"
+                  v-for="(people, idx) in peoples"
+                  :key="idx"
                   class="bg-gray-100 border-b border-gray-200"
                 >
-                  <td class="px-4 py-3">{{ message }}</td>
-                  <td class="px-4 py-3"></td>
-                  <td class="px-4 py-3"></td>
-                  <td class="px-4 py-3"></td>
+                  <td class="px-4 py-3">{{}}</td>
+                  <td class="px-4 py-3">{{ people.name }}</td>
+                  <td class="px-4 py-3">{{ people.lastName }}</td>
+                  <td class="px-4 py-3">{{ people.participation }}</td>
                 </tr>
               </table>
             </div>
@@ -152,5 +153,32 @@
 <script>
 export default {
   name: "Home",
+  data() {
+    return {
+      peoples: [],
+      people: {
+        name: "",
+        lastName: "",
+        participation: "",
+      },
+    };
+  },
+  created() {
+    this.peoples = JSON.parse(localStorage.getItem("listsPeople"));
+  },
+  methods: {
+    savePeople(people) {
+      let peoples = localStorage.getItem("listsPeople");
+      if (peoples) {
+        peoples = JSON.parse(peoples);
+        peoples.push(people);
+      } else {
+        peoples = [people];
+      }
+
+      this.peoples = peoples;
+      localStorage.setItem("listsPeople", JSON.stringify(peoples));
+    },
+  },
 };
 </script>
