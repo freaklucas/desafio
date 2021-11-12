@@ -39,7 +39,7 @@
               focus:outline-none
             "
             type="text"
-            placeholder="Last name"
+            placeholder="First name"
             aria-label="Full name"
           />
           <input
