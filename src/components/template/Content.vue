@@ -40,9 +40,10 @@
                 "
               >
                 <tr class="text-left border-b-2 border-gray-300">
-                  <th class="px-4 py-3">Código</th>
-                  <th class="px-4 py-3">Nome</th>
-                  <th class="px-4 py-3">Caminho</th>
+                  <th class="px-4 py-3">Code</th>
+                  <th class="px-4 py-3">First name</th>
+                  <th class="px-4 py-3">Last name</th>
+                  <th class="px-4 py-3">Participation</th>
                 </tr>
                 <tr
                   class="bg-gray-100 border-b border-gray-200"
@@ -51,6 +52,7 @@
                 >
                   <td class="px-4 py-3">{{ (counter += 1) }}</td>
                   <td class="px-4 py-3">{{ list.name }}</td>
+                  <td class="px-4 py-3">{{ list.path }}</td>
                   <td class="px-4 py-3">{{ list.path }}</td>
                 </tr>
               </table>
@@ -74,7 +76,30 @@ export default {
       description: [
         { text: "Lorem ipsum dolor si amet, consectetur adipiscing elit." },
       ],
+      lists: [],
+      list: {
+        code: "",
+        firstName: "",
+        lastName: "",
+      },
+      counter: 0,
     };
+  },
+  created() {
+    this.lists = JSON.parse(localStorage.getItem("listsNames"));
+  },
+  methods: {
+    saveList(list) {
+      let lists = localStorage.getItem("listsNames");
+
+      if (lists) {
+        lists = JSON.parse(lists);
+        lists.push(list);
+      } else {
+        lists = [list];
+        localStorage.setItem("listsNames", JSON.stringify(lists));
+      }
+    },
   },
 };
 </script>
