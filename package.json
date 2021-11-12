@@ -10,7 +10,8 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "eventing-bus": "^2.0.1",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-unique-id": "^3.2.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

@@ -80,6 +80,7 @@
             />
             <button
               @click.prevent="savePeople(people)"
+              v-on:click="counter++"
               class="
                 inline-block
                 text-sm
@@ -123,7 +124,6 @@
                 "
               >
                 <tr class="text-left border-b-2 border-gray-300">
-                  <th class="px-4 py-3">Code</th>
                   <th class="px-4 py-3">First name</th>
                   <th class="px-4 py-3">Last name</th>
                   <th class="px-4 py-3">Participation</th>
@@ -133,10 +133,11 @@
                   :key="idx"
                   class="bg-gray-100 border-b border-gray-200"
                 >
-                  <td class="px-4 py-3">{{}}</td>
-                  <td class="px-4 py-3">{{ people.name }}</td>
-                  <td class="px-4 py-3">{{ people.lastName }}</td>
-                  <td class="px-4 py-3">{{ people.participation }}</td>
+                  <td class="px-6 py-4 unique mr-6">
+                    {{ idx }}.{{ people.name }}
+                  </td>
+                  <td class="px-6 py-4">{{ people.lastName }}</td>
+                  <td class="px-6 py-4">{{ people.participation }}</td>
                 </tr>
               </table>
             </div>
@@ -155,11 +156,13 @@ export default {
   name: "Home",
   data() {
     return {
+      count: 0,
       peoples: [],
       people: {
         name: "",
         lastName: "",
         participation: "",
+        id: 0,
       },
     };
   },
@@ -175,9 +178,10 @@ export default {
       } else {
         peoples = [people];
       }
-
       this.peoples = peoples;
       localStorage.setItem("listsPeople", JSON.stringify(peoples));
+
+      this.count += 1;
     },
   },
 };
