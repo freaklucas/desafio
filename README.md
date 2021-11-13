@@ -12,7 +12,7 @@ npm install
 npm run serve
 ```
 
-## Caso esteja utilizando o node >=17, se der problemas de compatibilidade de módulos do vue 2 utilize o comando no terminal:
+### Caso esteja utilizando o node >=17, se der problemas de compatibilidade de módulos do vue 2 utilize o comando no terminal:
 
 export NODE_OPTIONS=--openssl-legacy-provider
 
