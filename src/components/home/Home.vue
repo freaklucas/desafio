@@ -132,8 +132,8 @@
                   :key="idx"
                   class="bg-gray-100 border-b border-gray-200"
                 >
-                  <td class="px-6 py-4 unique mr-6">
-                    {{ idx }}.{{ people.name }}
+                  <td class="px-6 py-4 unique mr-6 ml-8">
+                    {{ idx + 1 }}.{{ people.name }}
                   </td>
                   <td class="px-6 py-4">{{ people.lastName }}</td>
                   <td class="px-6 py-4">{{ people.participation }}</td>
@@ -142,16 +142,12 @@
             </div>
           </div>
         </div>
-        <div
-          class="lg:w-2/3 w-2/3 mt-4 lg:mt-2 pl-4 ml-4"
-          v-for="(people, idx) in peoples"
-          :key="idx"
-        >
+        <div class="lg:w-2/3 w-2/3 mt-4 lg:mt-2 pl-4 ml-4">
           <pie-chart
             class=""
             :data="[
               [this.people.name, this.people.participation],
-              ['João', 23],
+              ['Default', 23],
             ]"
           ></pie-chart>
         </div>
