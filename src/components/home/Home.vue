@@ -80,7 +80,6 @@
             />
             <button
               @click.prevent="savePeople(people)"
-              v-on:click="counter++"
               class="
                 inline-block
                 text-sm
@@ -143,13 +142,16 @@
             </div>
           </div>
         </div>
-        <div class="lg:w-2/3 w-2/3 mt-4 lg:mt-2 pl-4 ml-4">
+        <div
+          class="lg:w-2/3 w-2/3 mt-4 lg:mt-2 pl-4 ml-4"
+          v-for="(people, idx) in peoples"
+          :key="idx"
+        >
           <pie-chart
-            v-model="people.name"
             class=""
             :data="[
-              [name, 44],
-              ['Strawberry', 23],
+              [this.people.name, this.people.participation],
+              ['João', 23],
             ]"
           ></pie-chart>
         </div>
@@ -163,13 +165,11 @@ export default {
   name: "Home",
   data() {
     return {
-      count: 0,
       peoples: [],
       people: {
         name: "",
         lastName: "",
         participation: "",
-        id: 0,
       },
     };
   },
@@ -187,8 +187,6 @@ export default {
       }
       this.peoples = peoples;
       localStorage.setItem("listsPeople", JSON.stringify(peoples));
-
-      this.count += 1;
     },
   },
 };
