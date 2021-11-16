@@ -101,6 +101,10 @@
       </header>
     </div>
     <div class="flex flex-col h-screen m-auto items-center mt-12">
+      <h2 class="font-semibold text-2xl text-gray-600">DATA</h2>
+      <p class="font-normal text-gray-500 text-lg">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
       <div class="flex align-center mt-12">
         <div class="lg:w-2/3 md:w-2/3 mr-8 ml-4 sm:px-6 lg:px-4 center">
           <div class="flex">
